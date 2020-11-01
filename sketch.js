@@ -12,7 +12,7 @@ var score=0;
 
 var gameOver, restart;
 
-localStorage["HighestScore"] = 0;
+hs["HighestScore"] = 0;
 
 function preload(){
   trex_running =   loadAnimation("trex1.png","trex3.png","trex4.png");
@@ -72,7 +72,7 @@ function draw() {
   //trex.debug = true;
   background(255);
   text("Score: "+ score, 500,50);
-  text("Highscore: " + localStorage["HighestScore"], 400, 50);
+  text("Highscore: " + hs["HighestScore"], 400, 50);
   
   if (gameState===PLAY){
     score = score + Math.round(getFrameRate()/60);
@@ -186,10 +186,9 @@ function reset(){
   
   trex.changeAnimation("running",trex_running);
   
-  if(localStorage["HighestScore"]<score){
-    localStorage["HighestScore"] = score;
+  if(hs["HighestScore"]<score){
+    hs["HighestScore"] = score;
   }
-  console.log(localStorage["HighestScore"]);
   
   score = 0;
   
